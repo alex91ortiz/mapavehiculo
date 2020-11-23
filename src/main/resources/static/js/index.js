@@ -89,7 +89,7 @@ function listarVehiculos() {
 				var longitude = item.longitud;
 				var latitude = item.latitud;
 	
-				var iconPath = "../img/vehicle.png";
+				var iconPath = "https://mapavehiculoing.herokuapp.com/img/vehicle.png";
 
 				
 				var iconFeature = new ol.Feature({
