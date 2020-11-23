@@ -1,0 +1,97 @@
+package com.jcsoluctions.mykata.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.tsing.model.uname;
+import com.tsing.service.unameService;
+import com.tsing.service.unameServiceImpl;
+
+@RestController 
+public class unameController {
+	@Autowired
+    unameService unameServiceImpl;  
+  
+     
+   
+      
+    @RequestMapping(value = "/lname/", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<uname>> listAllunames() {
+        List<uname> lnames = unameServiceImpl.findAll();
+        if(lnames.isEmpty()){
+            return new ResponseEntity<List<uname>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<uname>>(lnames, HttpStatus.OK);
+    }
+  
+
+      
+    @RequestMapping(value = "/lname/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Optional<uname>> getuname(@PathVariable("id") int id) {
+        System.out.println("Fetching uname with id " + id);
+        Optional<uname> lname = unameServiceImpl.findById(id);
+        if (lname == null) {
+            System.out.println("uname with id " + id + " not found");
+            return new ResponseEntity<Optional<uname>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Optional<uname>>(lname, HttpStatus.OK);
+    }
+
+      
+    @RequestMapping(value = "/lname/", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<Void> createuname(@RequestBody uname lname,    UriComponentsBuilder ucBuilder) {
+       
+        validation
+  
+        unameServiceImpl.save(lname);
+  
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/lname/{id}", method = RequestMethod.PUT, produces = "application/json")
+    public ResponseEntity<uname> updateuname(@PathVariable("id") int id, @RequestBody uname lname) {
+        System.out.println("Updating uname " + id);
+          
+        uname currentuname = unameServiceImpl.findById(id).get();
+          
+        if (currentuname==null) {
+            System.out.println("uname with id " + id + " not found");
+            return new ResponseEntity<uname>(HttpStatus.NOT_FOUND);
+        }
+  		
+  		settings
+    
+          
+        unameServiceImpl.update(currentuname);
+        return new ResponseEntity<uname>(currentuname, HttpStatus.OK);
+    }
+  
+      
+    @RequestMapping(value = "/lname/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity<uname> deleteuname(@PathVariable("id") int id) {
+        System.out.println("Fetching & Deleting uname with id " + id);
+  
+        uname lname = unameServiceImpl.findById(id).get();
+        if (lname == null) {
+            System.out.println("Unable to delete. uname with id " + id + " not found");
+            return new ResponseEntity<uname>(HttpStatus.NOT_FOUND);
+        }
+  
+        unameServiceImpl.deleteById(id);
+        return new ResponseEntity<uname>(HttpStatus.NO_CONTENT);
+    }
+  
+      
+
+}

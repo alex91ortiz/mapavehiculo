@@ -1,0 +1,7 @@
+com/jcsoluctions/mapavehiculoing/controller/VehiculoController.class
+com/jcsoluctions/mapavehiculoing/repository/VehiculoRepository.class
+com/jcsoluctions/mapavehiculoing/service/VehiculoService.class
+com/jcsoluciones/mapavehiculoing/MapavehiculoingApplication.class
+com/jcsoluctions/mapavehiculoing/service/VehiculoServiceImpl.class
+com/jcsoluctions/mapavehiculoing/model/Vehiculo.class
+com/jcsoluctions/mapavehiculoing/utilities/generate.class

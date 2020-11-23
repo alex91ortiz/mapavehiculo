@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Mapa Vehiculo</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
+	<style>
+	    table.tm {
+	        width: 100%;
+	        height: 95%;
+	    }
+	    table.tm td.left, table.tm td.right {
+	        border: 1px solid #ccc;
+	        margin: 0;
+	        padding: 0;
+	    }
+	
+	    table.tm td.left {
+	        width: 75%;
+	    }
+	    table.tm td.right {
+	        width: 25%;
+	        vertical-align: top;
+	        padding: 5px;
+	    }
+	    td span {
+	        font-weight: bold;
+	    }
+	</style>	
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+    
+</head>
+
+<body >	
+	
+	Center: <span id="center"></span> 4.570868,-74.297333 - Zoom: <span id="zoom"></span>
+	<table class="tm">
+	    <tr>
+	      <td class="left">
+			<div class="map" id="map"></div>
+		  </td>
+	      <td class="right">
+	            <table>                
+	                <tr>
+	                    <td>
+	                        <hr/>
+	                        <!-- moveTo -->
+	                        <table>
+	                            <tr>
+	                                <td>lon</td>
+	                                <td>
+	                                    <input id="longitud" type="decimal" style="width:100px"/>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td>lat</td>
+	                                <td>
+	                                    <input id="latitud" type="decimal" style="width:100px"/>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td>Matricula</td>
+	                                <td>
+	                                    <input id="matricula" style="width:100px" />
+	                                </td>
+	                            </tr>
+	                           	<tr>
+	                                <td>Propietario</td>
+	                                <td>
+	                                    <input id="propietario" style="width:100px" />
+	                                </td>
+	                            </tr>
+	                           <tr>
+	                                <td>Marco</td>
+	                                <td>
+	                                    <input id="marca" style="width:100px" />
+	                                </td>
+	                            </tr>
+	                           	<tr>
+	                                
+	                                <td>
+										<button id="agregar" type="button" >Agregar</button>
+										<button id="limpiar" type="button" >Limpiar</button>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                    </td>
+	                </tr>
+	            </table>
+	        </td>
+	    </tr>
+	    <tr>
+	    	<td>
+	    		<table>
+	    			<thead>
+		    			<tr>
+		    				<th>Id</th>
+		    				<th>Matricula</th>
+		    				<th>Marca</th>
+		    				<th>Propietario</th>
+		    				<th>Longitud</th>
+		    				<th>Latitud</th>
+		    				<th>Action</th>
+		    			</tr>
+	    			</thead>
+	    			<tbody id="tablaview">
+	    			
+	    			</tbody>
+	    		</table>
+	    	</td>
+	    </tr>
+	</table>
+	<div id="popup" title="Welcome to OpenLayers"></div>
+	<script type="text/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/mapa.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</body>
+
+</html>

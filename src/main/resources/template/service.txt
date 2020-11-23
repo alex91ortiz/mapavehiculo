@@ -1,0 +1,20 @@
+package com.jcsoluctions.mykata.service;
+
+import java.util.List;
+
+import com.tsing.model.uname;
+
+public interface unameService {
+	Optional<uname> findById(int id);
+	     
+	validation
+     
+	uname save(uname uname);
+     
+	boolean update(uname uname);
+     
+	boolean deleteById(int id);
+ 
+    List<uname> findAll(); 
+     
+}

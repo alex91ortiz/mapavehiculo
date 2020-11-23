@@ -1,0 +1,15 @@
+[
+  {"table":{
+  	   "name":"vehiculo",
+  	   "attributes":[
+  	   		{"name":"IdVehiculo","type":"int","key":true,"nullable":false,"foreign":""},
+  	   		{"name":"matricula","type":"String","key":false,"nullable":false,"foreign":""},
+  	   		{"name":"propietario","type":"String","key":false,"nullable":false,"foreign":""},
+  	   		{"name":"marca","type":"String","key":false,"nullable":false,"foreign":""},
+  	   		{"name":"longitud","type":"BigDecimal","key":false,"nullable":false,"foreign":""},
+  	   		{"name":"latitud","type":"BigDecimal","key":false,"nullable":true,"foreign":""}
+  	  ],
+  	  "validation":{"success":true,"atrr":"matricula"}
+  	}
+  }
+]

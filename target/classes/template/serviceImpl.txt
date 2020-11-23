@@ -1,0 +1,67 @@
+package com.jcsoluctions.mykata.service;
+
+import java.util.List;
+
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.coomeva.test.model.uname;
+import com.coomeva.test.repository.unameRepository;
+
+
+
+@Transactional
+@Service("lnameService")
+public class unameServiceImpl  implements unameService{
+
+	@Autowired
+	unameRepository lnameRepository;
+
+	@Override
+	public Optional<uname>  findById(int id) {
+
+		Optional<uname> lname = lnameRepository.findById(id);
+		return lname;
+	}
+
+	validation
+
+	@Override
+	public boolean save(uname lname) {
+		
+		if (lname != null) {
+			return lnameRepository.save(lname);
+		}
+		return new Customer();
+	}
+
+	@Override
+	public boolean update(uname lname) {
+		
+		lnameRepository.save(lname);
+
+		return true;
+		
+	}
+
+	@Override
+	public boolean deleteById(int id) {
+		
+       	lnameRepository.deleteById(id);
+       	
+		return true;
+		
+	}
+
+	@Override
+	public List<uname> findAll() {
+		
+		return lnameRepository.findAll();
+	}
+	
+}
